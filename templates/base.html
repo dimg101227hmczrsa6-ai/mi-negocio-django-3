@@ -59,10 +59,11 @@
             <a href="{% url 'lista_categorias' %}">Categorías</a>
             <a href="{% url 'lista_clientes' %}">Clientes</a>
             {% if user.is_authenticated %}
-                <span>👤 {{ user.username }}</span>
-                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <span style="color:#38bdf8;">👤 {{ user.username }}</span>
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}
-                    <button type="submit" style="background:none; border:none; color:#fff; font-weight:bold; font-size:inherit; cursor:pointer; margin-left:20px;">Cerrar sesión</button>
+                    <button type="submit" class="btn btn-danger" style="margin-left:10px;">Cerrar sesión</button>
                 </form>
             {% else %}
                 <a href="{% url 'login' %}">Iniciar sesión</a>

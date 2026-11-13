@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Categoria, Producto, Cliente
 from .forms import CategoriaForm, ProductoForm, ClienteForm
+from django.db.models import Count, Sum
 # Create your views here.
 from django.http import HttpResponse
 
@@ -137,3 +138,37 @@ def eliminar_cliente(request, pk):
         return redirect('lista_clientes')
     return render(request, 'tienda/clientes/eliminar.html', {'cliente': cliente})
 
+@login_required
+def dashboard(request):
+    total_categorias = Categoria.objects.count()
+    total_productos = Producto.objects.count()
+    total_clientes = Cliente.objects.count()
+    productos_activos = Producto.objects.filter(activo=True).count()
+    productos_sin_stock = Producto.objects.filter(stock=0).count()
+
+    # Valor total del inventario
+    valor_inventario = Producto.objects.aggregate(
+        total=Sum('precio')
+    )['total'] or 0
+
+    # Últimos 5 productos creados
+    ultimos_productos = Producto.objects.order_by('-id')[:5]
+
+    # Productos por categoría
+    por_categoria = (
+        Categoria.objects
+        .annotate(num_productos=Count('producto'))
+        .order_by('-num_productos')
+    )
+
+    context = {
+        'total_categorias': total_categorias,
+        'total_productos': total_productos,
+        'total_clientes': total_clientes,
+        'productos_activos': productos_activos,
+        'productos_sin_stock': productos_sin_stock,
+        'valor_inventario': valor_inventario,
+        'ultimos_productos': ultimos_productos,
+        'por_categoria': por_categoria,
+    }
+    return render(request, 'tienda/dashboard.html', context)
