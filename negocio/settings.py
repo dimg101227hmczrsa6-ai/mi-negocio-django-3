@@ -139,7 +139,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 
 # Carpeta donde collectstatic reunirá todos los archivos
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Almacenamiento de WhiteNoise (comprime y agrega hash a los archivos)
 STORAGES = {
