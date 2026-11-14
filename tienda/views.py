@@ -12,10 +12,10 @@ def hola_mundo(request):
     return HttpResponse("¡Hola Mundo desde mi proyecto de negocio!")
 
 # ---------- INICIO ----------
-def inicio(request):
+def home(request):
     productos = Producto.objects.filter(activo=True)
     categorias = Categoria.objects.all()
-    return render(request, 'tienda/inicio.html', {
+    return render(request, 'tienda/home.html', {
         'productos': productos,
         'categorias': categorias
     })
