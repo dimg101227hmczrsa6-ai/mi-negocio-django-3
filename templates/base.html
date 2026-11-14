@@ -11,8 +11,8 @@
     <header class="site-header">
         <nav>
             <a href="{% url 'home' %}" class="logo">Papeleria Arte y Papel</a>
-            <a href="{% url 'productos' %}">Productos</a>
-            
+            <a href="{% url 'lista_productos' %}">Productos</a>
+
             {% if user.is_authenticated %}
                 <span>Hola, {{ user.username }}</span>
                 <a href="{% url 'logout' %}">Salir</a>
