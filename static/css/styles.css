@@ -1,0 +1,8 @@
+:root { 
+ --color-primary: #1E3A8A; 
+ --color-secondary: #0D9488; 
+ --color-bg: #F8FAFC;
+ --color-text: #0F172A; 
+ --radius: 8px; 
+ --space: 1rem; 
+} 
