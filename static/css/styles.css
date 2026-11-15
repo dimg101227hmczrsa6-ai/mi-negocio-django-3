@@ -123,3 +123,20 @@ form p { margin-bottom: 0.75rem; }
     .nav-links { flex-direction: column; align-items: flex-start; width: 100%; }
     table { display: block; overflow-x: auto; }
 }
+/* Login */
+.login-wrapper { display: flex; justify-content: center; padding: 2rem 0; }
+.login-card { width: 100%; max-width: 420px; }
+.login-card h2 { color: var(--color-primary); }
+.login-card .small { color: #475569; margin-bottom: 1rem; }
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 15px;
+}
+.login-card input:focus { outline: 3px solid var(--color-secondary); outline-offset: 1px; }
+.btn-block { display: block; width: 100%; padding: 0.75rem; }
