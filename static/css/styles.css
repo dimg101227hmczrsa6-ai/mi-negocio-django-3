@@ -140,3 +140,4 @@ form p { margin-bottom: 0.75rem; }
 }
 .login-card input:focus { outline: 3px solid var(--color-secondary); outline-offset: 1px; }
 .btn-block { display: block; width: 100%; padding: 0.75rem; }
+.login-card h2 { text-align: center; }
