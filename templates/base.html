@@ -2,49 +2,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    <title>{% block title %}Mi Negocio{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header class="site-header">
         <nav>
-            <a href="{% url 'home' %}" class="logo">Papeleria Arte y Papel</a>
+            <a href="{% url 'inicio' %}" class="logo">🛒 Mi Negocio</a>
             <div class="nav-links">
-            <a href="{% url 'lista_productos' %}">Inventario</a>
-            <a>Proveedores</a>
-            <a>Ventas</a>
-            <a>Gestión de Ventas</a>
-
-
-            {% if user.is_authenticated %}
-                <span>Hola, {{ user.username }}</span>
-                <form action="{% url 'logout' %}" method="post" class="logout-form">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Salir</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}"class="btn btn-success">Entrar</a>
-            {% endif %}
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'lista_productos' %}">Productos</a>
+                <a href="{% url 'lista_categorias' %}">Categorías</a>
+                <a href="{% url 'lista_clientes' %}">Clientes</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}">Dashboard</a>
+                    <span class="user-name">👤 {{ user.username }}</span>
+                    <form action="{% url 'logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                {% endif %}
             </div>
         </nav>
     </header>
+
     <main class="container">
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                    <li class="message {{ message.tags }}">{{ message }}< /li>
+                    <li class="message {{ message.tags }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
+
         {% block content %}{% endblock %}
     </main>
+
     <footer class="site-footer">
-        <p>© {% now "Y" %} — Gustavo</p>
+        <p>Proyecto Integrador - Software que Crece con tu Negocio &copy; {% now "Y" %}</p>
     </footer>
 </body>
 </html>
