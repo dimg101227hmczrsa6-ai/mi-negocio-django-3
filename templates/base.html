@@ -21,7 +21,7 @@
                     <span class="user-name">👤 {{ user.username }}</span>
                     <form action="{% url 'logout' %}" method="post" class="logout-form">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                        <button type="submit" class="btn btn-danger">Salir</button>
                     </form>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
