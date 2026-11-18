@@ -173,6 +173,7 @@ form p { margin-bottom: 0.75rem; }
 }
 .product-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
 .product-category { font-size: 12px; font-weight: 600; text-transform: uppercase; color: #475569; }
+.product-id { font-size: 12px; font-weight: 600; color: #475569; }
 .product-name { font-family: var(--font-title); font-size: 18px; font-weight: 600; color: var(--color-primary); }
 .product-price { font-family: var(--font-title); font-size: 22px; font-weight: 700; }
 .product-actions { margin-top: auto; padding-top: 0.5rem; }
