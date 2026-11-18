@@ -9,7 +9,7 @@
 {% if productos %}
 <div class="product-grid">
     {% for producto in productos %}
-    <article class="product-card">
+    <article class="product-card {% if producto.activo %}activo{% else %}inactivo{% endif %}">
         <div class="product-top">
             <span class="product-category">{{ producto.categoria.nombre }}</span>
             {% if producto.activo %}
