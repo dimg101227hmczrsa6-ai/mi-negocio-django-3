@@ -4,6 +4,9 @@
 <div class="card">
     <h2>¿Eliminar categoría?</h2>
     <p>¿Estás seguro de eliminar "<strong>{{ categoria.nombre }}</strong>"?</p>
+    <div class="warning-box" role="alert">
+        ⚠️ Esta acción no se puede deshacer. La categoria dejará existir al igual que los productos que estan en ella.
+    </div>
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Sí, eliminar</button>
